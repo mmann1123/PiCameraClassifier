@@ -12,6 +12,11 @@ camera.resolution = (1360, 768)
 #camera.stop_preview()
 
 # Camera warm-up time
-for i in range(0,5):
+i=1
+count = 1
+while i== 1:
     sleep(1)
-    camera.capture('./Capture/capture'+str(i)+'.jpg',resize=(442, 250))
+    count = "%09d" % count
+    print('./Capture/capture'+str(count)+'.jpg')
+    camera.capture('./Capture/Monday9am/capture'+str(count)+'.jpg',resize=(442, 250))
+    count = int(count) +1 
