@@ -20,6 +20,9 @@ def load_graph(model_file):
     tf.import_graph_def(graph_def)
   return graph
 
+# cell one 
+
+
 def read_tensor_from_image_file(file_name, input_height=299, input_width=299,
 				input_mean=0, input_std=255):
   input_name = "file_reader"
@@ -100,9 +103,30 @@ for dir, dirs, files in os.walk(rootdir):
 			proc.kill()
  
 
+im = Image.open(file_name)
+rgb_im = im.convert('RGB')
+r, g, b = rgb_im.getpixel((1, 1))
+print(r, g, b)
+
+
+import glob
+import scipy
+import matplotlib
+def get_images(path, image_type):
+	image_list = []
+	for filename in glob.glob(path + '/*'+ image_type):
+	    im=scipy.misc.imread(filename, mode='RGB')
+	    image_list.append(im)
+	return image_list
 
 
 
+image_list = get_images('/home/mmann1123/Dropbox/PiCapture/Testing', '.jpg')
+temp = np.array(image_list)
+
+red_images = temp[:,:,:,0]
+green_images = temp[:,:,:,1]
+blue_images = temp[:,:,:,2]
 
 ################## single photo 
 
