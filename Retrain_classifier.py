@@ -20,8 +20,6 @@ def load_graph(model_file):
     tf.import_graph_def(graph_def)
   return graph
 
-# cell one 
-
 
 def read_tensor_from_image_file(file_name, input_height=299, input_width=299,
 				input_mean=0, input_std=255):
