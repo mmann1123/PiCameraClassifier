@@ -8,8 +8,8 @@ from picamera import PiCamera
 os.chdir('/home/pi/Documents/PiCameraClassifier/Capture')
 
 # set up start end dates and frequency of photo shoot
-start_datetime = datetime(2017,12,7,17,00)
-end_datetime = datetime(2017,12,7,18,30)
+start_datetime = datetime(2018,3,7,1,00)
+end_datetime = datetime(2018,3,19,18,30)
 delta = timedelta(minutes=2)
 
 # read in dropbox token from file
@@ -41,7 +41,8 @@ camera.resolution = (1360, 768)
 def take_pics(num_of_photos):     
     # take 10 photos 
     i=1
-    while i <= num_of_photos:
+    while i <= 
+    :
         time_now = datetime.now().strftime("%d_%m_%Y-%H:%M:%S")
         sleep(1) # Camera warm-up time
         newpath = r'./Date_'+ datetime.now().strftime("%d_%m_%Y")
@@ -78,13 +79,15 @@ def job():
     for i in datelist:
         runTime = i[0] + " " + i[1]
         if i and date == str(runTime):   # CHANGE ==
-            take_pics(num_of_photos= 10)  # run image capture 10 pictures 
+            take_pics(num_of_photos= 2)  # run image capture 2 pictures 
 
 
 datelist = []
 for result in createtimes(start_datetime, end_datetime, delta):
-    print('Staring picture capture at: '+result.strftime("%d.%m.%Y"),result.strftime("%H:%M:%S"))
-    datelist.append((result.strftime("%d.%m.%Y"),result.strftime("%H:%M:%S")))        
+    # limit to day time hours
+    if int(result.strftime("%H")) >=7 and int(result.strftime("%H")) <=19:
+	print('Staring picture capture at: '+result.strftime("%d.%m.%Y"),result.strftime("%H:%M:%S"))
+    	datelist.append((result.strftime("%d.%m.%Y"),result.strftime("%H:%M:%S")))        
  
 
 # run the task 
