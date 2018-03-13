@@ -76,13 +76,13 @@ The following techniques are used:
 - Hough Transform Line Detection
 
 Hough Line Detection Results
-![Images/HoughesLines.png](Images/HoughesLines.png)
+![Images/HoughesLines.png](https://github.com/mmann1123/PiCameraClassifier/raw/master/Images/HoughesLines.png)
 
 Linear Estimate of Line Feature
-![Images/LinearLineEstimate.png](Images/LinearLineEstimate.png)
+![Images/LinearLineEstimate.png](https://github.com/mmann1123/PiCameraClassifier/raw/master/Images/LinearLineEstimate.png)
 
 AOI Masking
-![Images/AOImask.png](Images/AOImask.png)
+![Images/AOImask.png](https://github.com/mmann1123/PiCameraClassifier/raw/master/Images/AOImask.png)
 
 
 
