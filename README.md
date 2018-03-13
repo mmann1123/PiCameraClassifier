@@ -62,6 +62,7 @@ fedextruck 0.999915
 notafedextruck 8.54759e-05
 ```
 
+
 ## AOI based on road line identification
 One issue is that each periods images might be a little different based on camera placement. For this reason I wanted to create a simple algorithm for finding the road line, and croping an area of interest (AOI) big enough to capture only cars on the road.
 
@@ -74,17 +75,30 @@ The following techniques are used:
 - Canny Edge Detection
 - Region of Interest Selection
 - Hough Transform Line Detection
+- Line estimates and AOI masking
 
-Hough Line Detection Results
+**Hough Line Detection Results**
+
 ![Images/HoughesLines.png](https://github.com/mmann1123/PiCameraClassifier/raw/master/Readme/HoughesLines.png)
 
-Linear Estimate of Line Feature
+**Linear Estimate of Line Feature**
+
 ![Images/LinearLineEstimate.png](https://github.com/mmann1123/PiCameraClassifier/raw/master/Readme/LinearLineEstimate.png)
 
-AOI Masking
+**AOI Masking**
+
 ![Images/AOImask.png](https://github.com/mmann1123/PiCameraClassifier/raw/master/Readme/AOImask.png)
 
 
 
+## Classification of real time images
+The next step is to see how our classifier does is the wild. Here we retrain TensorFlows light MobileNet classifier to identify FedEx trucks from my window>
 
 
+You can find the tutorial here [Retrain_Tensor_Classifier.ipynb](Retrain_Tensor_Classifier.ipynb).
+
+
+**Classification with Probability of Class**
+![Images/Classified.png](https://github.com/mmann1123/PiCameraClassifier/raw/master/Readme/Classified.png)
+
+Although it gets confused by the purple car, its class probability is very low. Therefore we might still have a good classifier with a little bit of filtering. 
