@@ -62,5 +62,29 @@ fedextruck 0.999915
 notafedextruck 8.54759e-05
 ```
 
- 
+## AOI based on road line identification
+One issue is that each periods images might be a little different based on camera placement. For this reason I wanted to create a simple algorithm for finding the road line, and croping an area of interest (AOI) big enough to capture only cars on the road.
+
+You can find the tutorial here [Find_Street_Yellow_Line.ipynb](Find_Street_Yellow_Line.ipynb).
+
+
+The following techniques are used:
+
+- Color Selection
+- Canny Edge Detection
+- Region of Interest Selection
+- Hough Transform Line Detection
+
+Hough Line Detection Results
+![Images/HoughesLines.png](Images/HoughesLines.png)
+
+Linear Estimate of Line Feature
+![Images/LinearLineEstimate.png](Images/LinearLineEstimate.png)
+
+AOI Masking
+![Images/AOImask.png](Images/AOImask.png)
+
+
+
+
 
