@@ -8,8 +8,8 @@ from picamera import PiCamera
 os.chdir('/home/pi/Documents/PiCameraClassifier/Capture')
 
 # set up start end dates and frequency of photo shoot
-start_datetime = datetime(2018,3,7,1,00)
-end_datetime = datetime(2018,3,19,18,30)
+start_datetime = datetime(2018,13,7,1,00)
+end_datetime = datetime(2018,3,20,18,30)
 delta = timedelta(minutes=2)
 
 # read in dropbox token from file
@@ -79,7 +79,7 @@ def job():
     for i in datelist:
         runTime = i[0] + " " + i[1]
         if i and date == str(runTime):   # CHANGE ==
-            take_pics(num_of_photos= 2)  # run image capture 2 pictures 
+            take_pics(num_of_photos= 1)  # run image capture 2 pictures 
 
 
 datelist = []
