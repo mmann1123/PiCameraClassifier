@@ -41,8 +41,7 @@ camera.resolution = (1360, 768)
 def take_pics(num_of_photos):     
     # take 10 photos 
     i=1
-    while i <= 
-    :
+    while i <= num_of_photos:
         time_now = datetime.now().strftime("%d_%m_%Y-%H:%M:%S")
         sleep(1) # Camera warm-up time
         newpath = r'./Date_'+ datetime.now().strftime("%d_%m_%Y")
