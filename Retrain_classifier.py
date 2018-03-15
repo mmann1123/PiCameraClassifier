@@ -5,8 +5,6 @@ IMAGE_SIZE=224
 ARCHITECTURE="mobilenet_1.0_${IMAGE_SIZE}"
 python -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks    --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt      --image_dir=/home/mmann1123/Dropbox/PiCapture/StreetCapture --random_brightness=15
 
-python -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph_"${ARCHITECTURE}".pb   --output_labels=tf_files/retrained_labels_"${ARCHITECTURE}".txt   --architecture="${ARCHITECTURE}" --learning_rate=0.0005 --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"_LR_0005 --image_dir="/home/mmann1123/Dropbox/PiCapture/StreetCapture" --random_brightness=15
-
 #removign architecture flag with default to inception v3 
 
 # run from python
