@@ -1,9 +1,13 @@
 # run following in shell
-cd ~/Documents/tensorflow-for-poets-2/
-source activate tensorflow   # activate anaconda environment with tensorflow
+#cd ~/Documents/tensorflow-for-poets-2/
+#source activate tensorflow   # activate anaconda environment with tensorflow
 IMAGE_SIZE=224
-ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
-python -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt   --architecture="${ARCHITECTURE}"   --image_dir=/home/mmann1123/Dropbox/PiCapture/StreetCapture
+ARCHITECTURE="mobilenet_1.0_${IMAGE_SIZE}"
+python -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks    --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt      --image_dir=/home/mmann1123/Dropbox/PiCapture/StreetCapture --random_brightness=15
+
+python -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph_"${ARCHITECTURE}".pb   --output_labels=tf_files/retrained_labels_"${ARCHITECTURE}".txt   --architecture="${ARCHITECTURE}" --learning_rate=0.0005 --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"_LR_0005 --image_dir="/home/mmann1123/Dropbox/PiCapture/StreetCapture" --random_brightness=15
+
+#removign architecture flag with default to inception v3 
 
 # run from python
 import scripts.label_image
@@ -59,9 +63,9 @@ input_mean = 128
 input_std = 128
 input_layer = "input"
 output_layer = "final_result"
-label_file = r'/home/mmann1123/Documents/tensorflow-for-poets-2/tf_files/retrained_labels.txt'
-model_file = r'/home/mmann1123/Documents/tensorflow-for-poets-2/tf_files/retrained_graph.pb'
-
+label_file = r'/home/mmann1123/Documents/PiCameraClassifier/tf_files/retrained_labels.txt'
+model_file = r'/home/mmann1123/Documents/PiCameraClassifier/tf_files/retrained_graph.pb'
+ 
 
 ###############################
 # iterate across series of photos 
@@ -69,7 +73,7 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 import time
 import psutil
-os.chdir(r'/home/mmann1123/Dropbox/PiCapture/Testing')
+os.chdir(r'/home/mmann1123/Dropbox/Apps/PiCameraLogger/14_03_2018/')
 rootdir = os.getcwd()
 
 for dir, dirs, files in os.walk(rootdir):
@@ -94,37 +98,14 @@ for dir, dirs, files in os.walk(rootdir):
 	draw = ImageDraw.Draw(image)
 	draw.text(xy =(50,50),text=labels[top_k[0]]+' '+np.array2string(results[top_k[0]]),fill=(255,255,255), font=font_type)
 	image.show()
-	time.sleep(1)
+	time.sleep(5)
 	# hide image
 	for proc in psutil.process_iter():
 		if proc.name() == "display":
 			proc.kill()
  
 
-im = Image.open(file_name)
-rgb_im = im.convert('RGB')
-r, g, b = rgb_im.getpixel((1, 1))
-print(r, g, b)
 
-
-import glob
-import scipy
-import matplotlib
-def get_images(path, image_type):
-	image_list = []
-	for filename in glob.glob(path + '/*'+ image_type):
-	    im=scipy.misc.imread(filename, mode='RGB')
-	    image_list.append(im)
-	return image_list
-
-
-
-image_list = get_images('/home/mmann1123/Dropbox/PiCapture/Testing', '.jpg')
-temp = np.array(image_list)
-
-red_images = temp[:,:,:,0]
-green_images = temp[:,:,:,1]
-blue_images = temp[:,:,:,2]
 
 ################## single photo 
 
