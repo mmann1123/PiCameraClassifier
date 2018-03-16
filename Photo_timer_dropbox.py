@@ -8,9 +8,9 @@ from picamera import PiCamera
 os.chdir('/home/pi/Documents/PiCameraClassifier/Capture')
 
 # set up start end dates and frequency of photo shoot
-start_datetime = datetime(2018,13,7,1,00)
+start_datetime = datetime(2018,3,7,1,00)
 end_datetime = datetime(2018,3,20,18,30)
-delta = timedelta(minutes=2)
+delta = timedelta(seconds=1)
 
 # read in dropbox token from file
 token=open("../dropbox_auth.txt").readline().rstrip()
@@ -61,7 +61,7 @@ def take_pics(num_of_photos):
             try:
                 file_path = os.path.join(dir, file)
                 dest_path = os.path.join('/',datetime.now().strftime("%d_%m_%Y"), file)
-                print 'Uploading %s to %s' % (file_path, dest_path)
+                #print 'Uploading %s to %s' % (file_path, dest_path)
                 with open(file_path) as f:               
                      dbx.files_upload(f.read(),dest_path)
                      os.remove(file_path)
@@ -85,8 +85,8 @@ datelist = []
 for result in createtimes(start_datetime, end_datetime, delta):
     # limit to day time hours
     if int(result.strftime("%H")) >=7 and int(result.strftime("%H")) <=19:
-	print('Staring picture capture at: '+result.strftime("%d.%m.%Y"),result.strftime("%H:%M:%S"))
-    	datelist.append((result.strftime("%d.%m.%Y"),result.strftime("%H:%M:%S")))        
+        print('Staring picture capture at: '+result.strftime("%d.%m.%Y"),result.strftime("%H:%M:%S"))
+        datelist.append((result.strftime("%d.%m.%Y"),result.strftime("%H:%M:%S")))        
  
 
 # run the task 
