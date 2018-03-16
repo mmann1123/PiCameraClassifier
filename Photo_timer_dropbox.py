@@ -10,7 +10,7 @@ os.chdir('/home/pi/Documents/PiCameraClassifier/Capture')
 # set up start end dates and frequency of photo shoot
 start_datetime = datetime(2018,3,7,1,00)
 end_datetime = datetime(2018,3,20,18,30)
-delta = timedelta(seconds=1)
+delta = timedelta(minutes=1)
 
 # read in dropbox token from file
 token=open("../dropbox_auth.txt").readline().rstrip()
