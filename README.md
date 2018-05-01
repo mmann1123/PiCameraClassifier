@@ -66,7 +66,7 @@ notafedextruck 8.54759e-05
 ## AOI based on road line identification
 One issue is that each periods images might be a little different based on camera placement. For this reason I wanted to create a simple algorithm for finding the road line, and croping an area of interest (AOI) big enough to capture only cars on the road.
 
-You can find the tutorial here [./Find_Street_Yellow_Line_Tutorial.ipynb](Find_Street_Yellow_Line.ipynb).
+You can find the tutorial here [./Find_Street_Yellow_Line_Tutorial.ipynb](./Find_Street_Yellow_Line_Tutorial.ipynb).
 
 
 The following techniques are used:
@@ -95,7 +95,7 @@ The following techniques are used:
 The next step is to see how our classifier does is the wild. Here we retrain TensorFlows light MobileNet classifier to identify FedEx trucks from my window>
 
 
-You can find the tutorial here [./Retrain_Tensor_Classifier_Tutorial.ipynb](Retrain_Tensor_Classifier.ipynb).
+You can find the tutorial here [Retrain_Tensor_Classifier_Tutorial.ipynb](./Retrain_Tensor_Classifier_Tutorial.ipynb).
 
 
 **Classification with Probability of Class**
